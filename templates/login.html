@@ -1,0 +1,18 @@
+{% from "_form.html" import render_field %}
+{% extends "base.html" %}
+{% block pagetitle %}Log in{% endblock %}
+{% block body %}
+  <h1>Log in</h1>
+  <a href="{{url_for('.index')}}">Home</a>
+  {% if not session.user %}
+    <form method="POST">
+      <dl>
+        {{render_field(form.email)}}
+        {{render_field(form.password)}}
+      </dl>
+      <p><input type="submit" value="Log in"></p>
+    </form>
+  {% else %}
+    You are already logged in!
+  {% endif %}
+{% endblock %}

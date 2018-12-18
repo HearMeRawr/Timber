@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}Maddening Aspirations &mdash; {% block pagetitle %}Untitled{% endblock %}{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link href="https://fonts.googleapis.com/css?family=Cabin:400,700" rel="stylesheet">  
+  {% block head %}
+  {% endblock %}
+</head>
+<body>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul class="flashes">
+      {% for category, message in messages %}
+        <li class="flash-{{category}}">{{message}}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  <div id="TopBar">
+    <div class="container">
+    {% if session.user %}
+      <a href="{{url_for('.logout')}}">Log Out</a>
+    {% else %}
+      <a id="ButtonLogin" href="{{url_for('.login')}}">Log In</a>
+    {% endif %}
+    </div>
+  </div>
+  {% block body %}
+  {% endblock %}
+</body>
+</html>

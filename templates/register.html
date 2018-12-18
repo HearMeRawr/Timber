@@ -1,0 +1,19 @@
+{% from "_form.html" import render_field %}
+{% extends "base.html" %}
+{% block pagetitle %}Login{% endblock %}
+{% block body %}
+  <h1>Register</h1>
+  <a href="{{url_for('.index')}}">Home</a>
+  {% if not session.user %}
+    <form method="POST">
+      <dl>
+        {{render_field(form.email)}}
+        {{render_field(form.password)}}
+        {{render_field(form.passwordConfirm)}}
+      </dl>
+      <p><input type="submit" value="Register"></p>
+    </form>
+  {% else %}
+    <p>You already have an account, silly!</p>
+  {% endif %}
+{% endblock %}

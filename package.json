@@ -1,0 +1,13 @@
+{
+  "name": "hello-flask",
+  "version": "0.0.1",
+  "public": false,
+  "scripts": {
+    "start": "pip3 install -r reqs.py --user && python3 -m flask run"
+  },
+  "dependencies": {
+  },
+  "engines": {
+    "node": "8.x"
+  }
+}
