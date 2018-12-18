@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block pagetitle %}Home{% endblock %}
+{% block body %}
+<div id="BackgroundImg">
+</div>
+  <div class="content">
+    <div id="LogoContent">
+      <h1>Timber</h1>
+      {% if not session.user %}
+        <div class="buttonStacked">
+          <a id="ButtonLogin" href="{{url_for('.login')}}">Log in</a>
+          <a id="ButtonRegister" href="{{url_for('.register')}}">Sign Up</a>
+        </div>
+      {% else %}
+        Hello, {{session.user.name}}!
+        <a href="{{url_for('.logout')}}">log out</a>
+        <a href="{{url_for('.index')}}">new post</a>
+      {% endif %}
+    </div>
+    {% for post in posts %}
+      <article>
+        <header>{{post.title}}</header>
+        <main>{{post.content}}</main>
+        <footer>&mdash; Posted by {{post.author}} &mdash;</footer>
+      </article>
+    {% endfor %}
+  </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{
+  "install": {
+    "include": [
+      "^main.py$",
+      "^.restart$"
+    ]
+  },
+  "throttle": 5000
+}
